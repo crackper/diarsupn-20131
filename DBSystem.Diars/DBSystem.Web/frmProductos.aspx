@@ -2,16 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<b>Criterio:</b>
-    <asp:TextBox ID="txtCriterio" runat="server" />
-    <asp:Button ID="btnBuscar" Text="Buscar" runat="server"/>
-    <br />
+    <fieldset>
+        <legend>Busqueda</legend>
+        <b>Criterio:</b>
+        <asp:TextBox ID="txtCriterio" runat="server" />
+        <asp:Button ID="btnBuscar" Text="Buscar" runat="server"/>
+    </fieldset>
+
     <asp:GridView ID="gvProductos" runat="server" CellPadding="4" 
         ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" 
         DataSourceID="odsProducto" AllowPaging="True" PageSize="15" >
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+            <asp:BoundField DataField="Id" HeaderText="ID" SortExpression="Id" />
             <asp:BoundField DataField="Categoria.Descripcion" HeaderText="Categoria" 
                 SortExpression="CategoriaId" />
             <asp:BoundField DataField="Codigo" HeaderText="Codigo" 
@@ -26,6 +29,9 @@
             <asp:HyperLinkField DataNavigateUrlFields="Id" 
                 DataNavigateUrlFormatString="frmMttoProducto.aspx?idProducto={0}&amp;acc=update" 
                 HeaderText="Editar" Text="Editar" />
+           <asp:HyperLinkField DataNavigateUrlFields="Id" 
+                DataNavigateUrlFormatString="frmMttoProducto.aspx?idProducto={0}&amp;acc=delete" 
+                HeaderText="Eliminar" Text="Eliminar"/>
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

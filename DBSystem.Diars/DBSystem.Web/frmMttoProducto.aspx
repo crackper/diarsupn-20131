@@ -25,20 +25,9 @@
             Stock:
             <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
             <br />
-            Foto:
-            <asp:TextBox ID="FotoTextBox" runat="server" Text='<%# Bind("Foto") %>' />
-            <br />
             Descontinuado:
             <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
                 Checked='<%# Bind("Descontinuado") %>' />
-            <br />
-            Categoria:
-            <asp:TextBox ID="CategoriaTextBox" runat="server" 
-                Text='<%# Bind("Categoria") %>' />
-            <br />
-            DetallePedidoes:
-            <asp:TextBox ID="DetallePedidoesTextBox" runat="server" 
-                Text='<%# Bind("DetallePedidoes") %>' />
             <br />
             <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
                 CommandName="Update" Text="Actualizar" />
@@ -96,19 +85,9 @@
             Stock:
             <asp:Label ID="StockLabel" runat="server" Text='<%# Bind("Stock") %>' />
             <br />
-            Foto:
-            <asp:Label ID="FotoLabel" runat="server" Text='<%# Bind("Foto") %>' />
-            <br />
             Descontinuado:
             <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
                 Checked='<%# Bind("Descontinuado") %>' Enabled="false" />
-            <br />
-            Categoria:
-            <asp:Label ID="CategoriaLabel" runat="server" Text='<%# Bind("Categoria") %>' />
-            <br />
-            DetallePedidoes:
-            <asp:Label ID="DetallePedidoesLabel" runat="server" 
-                Text='<%# Bind("DetallePedidoes") %>' />
             <br />
             <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" 
                 CommandName="Edit" Text="Editar" />
@@ -131,29 +110,4 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-
-    Id:
-            <asp:TextBox ID="IdTextBox" runat="server" ReadOnly="True" Text="0" />
-            <br />
-            CategoriaId:
-            <asp:TextBox ID="CategoriaIdTextBox" runat="server" 
-                Text='<%# Bind("CategoriaId") %>' />
-            <br />
-            Codigo:
-            <asp:TextBox ID="CodigoTextBox" runat="server" Text='<%# Bind("Codigo") %>' />
-            <br />
-            Descripcion:
-            <asp:TextBox ID="DescripcionTextBox" runat="server" 
-                Text='<%# Bind("Descripcion") %>' />
-            <br />
-            Precio:
-            <asp:TextBox ID="PrecioTextBox" runat="server" Text='<%# Bind("Precio") %>' />
-            <br />
-            Stock:
-            <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
-            <br />
-            Descontinuado:
-            <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
-                Checked='<%# Bind("Descontinuado") %>' />
-            <br />
 </asp:Content>
