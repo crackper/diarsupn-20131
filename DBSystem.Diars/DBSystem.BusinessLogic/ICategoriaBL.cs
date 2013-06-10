@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using DBSystem.Entities;
 
-namespace DBSystem.Repository
+namespace DBSystem.BusinessLogic
 {
-    public interface ICategoriaRepository
+    public interface ICategoriaBL
     {
         List<Categoria> GetAllFromCategoria();
         List<Categoria> GetFromCategoriaByCriterio(string criterio);
