@@ -16,17 +16,26 @@
     <assembly name="DBSystem.BusinessLogic" />
     <namespace name="DBSystem.BusinessLogic" />
     <container>
-      <!-- Repository -->
+<<<<<<< HEAD
+      <!--Data Access -->
       <register type="IProductoRepository" mapTo="ProductoRepository" />
       <register type="ICategoriaRepository" mapTo="CategoriaRepository" />
+      <!--BusinessLogic-->
+      <register type="IProductoBL" mapTo="ProductoBL" />
+      <register type="ICategoriaBL" mapTo="CategoriaBL" />
+=======
+      <!-- Repository -->
+      <register  type="IProductoRepository" mapTo="ProductoRepository"/>
+      <register  type="ICategoriaRepository" mapTo="CategoriaRepository"/>
       <register  type="IFormaPagoRepository" mapTo="FormaPagoRepository"/>
       <register  type="IClienteRepository" mapTo="ClienteRepository"/>
       
       <!-- BusinessLogic -->
-      <register type="IProductoBL" mapTo="ProductoBL" />
-      <register type="ICategoriaBL" mapTo="CategoriaBL" />
+      <register type="IProductoBL" mapTo="ProductoBL"/>
+      <register  type="ICategoriaBL" mapTo="CategoriaBL"/>
       <register  type="IFormaPagoBL" mapTo="FormaPagoBL"/>
       <register  type="IClienteBL" mapTo="ClienteBL"/>
+>>>>>>> origin/master
     </container>
   </unity>
 

@@ -55,9 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaRepository.cs" />
+    <Compile Include="ClienteRepository.cs" />
     <Compile Include="DBSystemContext.cs" />
+    <Compile Include="FormaPagoRepository.cs" />
     <Compile Include="ICategoriaRepository.cs" />
+    <Compile Include="IClienteRepository.cs" />
     <Compile Include="IProductoRepository.cs" />
+    <Compile Include="IFormaPagoRepository.cs" />
     <Compile Include="Mapping\CategoriaMap.cs" />
     <Compile Include="Mapping\ClienteMap.cs" />
     <Compile Include="Mapping\DetallePedidoMap.cs" />
