@@ -38,5 +38,13 @@ namespace DBSystem.Web
         {
             e.ObjectInstance = ProductoBL;
         }
+
+        [Dependency]
+        public ICategoriaBL CategoriaBL { get; set; }
+
+        protected void odsCategorias_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
+        {
+            e.ObjectInstance = CategoriaBL;
+        }
     }
 }

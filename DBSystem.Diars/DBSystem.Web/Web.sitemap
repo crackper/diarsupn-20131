@@ -7,8 +7,9 @@
       </siteMapNode>
       <siteMapNode url="" title="Ventas"  description="Ventas">
         <siteMapNode url="~/Almacen/frmProductos.aspx" title="Productos"  description="Productos">
-          <siteMapNode url="~/Almacen/frmMttoProducto.aspx" title="Catalogar Producto"  description="Catalogar Producto" />
+          <siteMapNode url="~/Almacen/frmMttoProducto.aspx" title="Catalogar Producto"  description="Catalogar Producto" />          
         </siteMapNode>
+        <siteMapNode url="~/Ventas/frmListClientes.aspx" title="Buscar Clientes"  description="Buscar Clientes" />
       </siteMapNode>
         <siteMapNode url="~/About.aspx" title="About"  description="About" />
     </siteMapNode>

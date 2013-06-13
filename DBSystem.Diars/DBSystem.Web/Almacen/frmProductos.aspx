@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <fieldset>
-        <legend>Busqueda</legend>
-        <b>Criterio:</b>
-        <asp:TextBox ID="txtCriterio" runat="server" />
-        <asp:Button ID="btnBuscar" Text="Buscar" runat="server"/>
-    </fieldset>
+    
+            <label class="bold">Buscar</label>
+            <span class="btn-group">
+                <asp:TextBox  CssClass="input-search" ID="txtCriterio" runat="server" />
+                <asp:Button CssClass="btn btn-round" ID="btnBuscar" Text="Buscar" runat="server"/>
+            </span>    
 
     <asp:GridView ID="gvProductos" runat="server" CellPadding="4" 
         ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" 
