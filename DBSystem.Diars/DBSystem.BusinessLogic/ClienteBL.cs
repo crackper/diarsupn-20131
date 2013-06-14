@@ -10,6 +10,7 @@ namespace DBSystem.BusinessLogic
 {
     public class ClienteBL:IClienteBL
     {
+        [Dependency]
         public IClienteRepository ClienteRepository { get; set; }
 
         public List<Cliente> GetFromClienteByCriterio(string criterio)

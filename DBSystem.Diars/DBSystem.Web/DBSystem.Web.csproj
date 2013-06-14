@@ -76,12 +76,17 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Almacen\frmMttoProducto.aspx" />
     <Content Include="Almacen\frmProductos.aspx" />
+    <Content Include="frmDemoControlesAjax.aspx" />
+    <Content Include="Styles\css\kube.css" />
+    <Content Include="Styles\css\kube.min.css" />
+    <Content Include="Styles\css\master.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Ventas\frmListClientes.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -152,6 +157,13 @@
     <Compile Include="Almacen\frmProductos.aspx.designer.cs">
       <DependentUpon>frmProductos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmDemoControlesAjax.aspx.cs">
+      <DependentUpon>frmDemoControlesAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmDemoControlesAjax.aspx.designer.cs">
+      <DependentUpon>frmDemoControlesAjax.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +175,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmListClientes.aspx.cs">
+      <DependentUpon>frmListClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmListClientes.aspx.designer.cs">
+      <DependentUpon>frmListClientes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

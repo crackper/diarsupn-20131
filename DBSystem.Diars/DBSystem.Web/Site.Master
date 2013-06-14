@@ -6,7 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    <link href="~/Styles/css/kube.min.css" rel="Stylesheet" type="text/css" />
+    <link href="~/Styles/css/master.css" rel="Stylesheet" type="text/css" />
+     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -43,6 +45,8 @@
             </div>
         </div>
         <div class="main">
+            <ajaxToolkit:ToolkitScriptManager runat="server">
+            </ajaxToolkit:ToolkitScriptManager>
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
         <div class="clear">

@@ -1,72 +1,96 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
+=======
+﻿<?xml version="1.0"?>
+>>>>>>> Fin Semana 12 - dia 02
 <!--
   Para obtener más información sobre cómo configurar la aplicación de ASP.NET, visite
   http://go.microsoft.com/fwlink/?LinkId=169433
   -->
-
 <configuration>
   <configSections>
+<<<<<<< HEAD
     <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection,Microsoft.Practices.Unity.Configuration" />
+=======
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection,Microsoft.Practices.Unity.Configuration"/>
+    <section name="sanitizer" requirePermission="false" type="AjaxControlToolkit.Sanitizer.ProviderSanitizerSection, AjaxControlToolkit"/>
+>>>>>>> Fin Semana 12 - dia 02
   </configSections>
-
   <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
     <assembly name="DBSystem.Repository" />
     <namespace name="DBSystem.Repository" />
     <assembly name="DBSystem.BusinessLogic" />
     <namespace name="DBSystem.BusinessLogic" />
     <container>
+      <!-- Repository -->
 <<<<<<< HEAD
-      <!--Data Access -->
       <register type="IProductoRepository" mapTo="ProductoRepository" />
       <register type="ICategoriaRepository" mapTo="CategoriaRepository" />
-      <!--BusinessLogic-->
-      <register type="IProductoBL" mapTo="ProductoBL" />
-      <register type="ICategoriaBL" mapTo="CategoriaBL" />
-=======
-      <!-- Repository -->
-      <register  type="IProductoRepository" mapTo="ProductoRepository"/>
-      <register  type="ICategoriaRepository" mapTo="CategoriaRepository"/>
       <register  type="IFormaPagoRepository" mapTo="FormaPagoRepository"/>
       <register  type="IClienteRepository" mapTo="ClienteRepository"/>
       
       <!-- BusinessLogic -->
-      <register type="IProductoBL" mapTo="ProductoBL"/>
-      <register  type="ICategoriaBL" mapTo="CategoriaBL"/>
+      <register type="IProductoBL" mapTo="ProductoBL" />
+      <register type="ICategoriaBL" mapTo="CategoriaBL" />
       <register  type="IFormaPagoBL" mapTo="FormaPagoBL"/>
       <register  type="IClienteBL" mapTo="ClienteBL"/>
->>>>>>> origin/master
+=======
+      <register type="IProductoRepository" mapTo="ProductoRepository"/>
+      <register type="ICategoriaRepository" mapTo="CategoriaRepository"/>
+      <register type="IFormaPagoRepository" mapTo="FormaPagoRepository"/>
+      <register type="IClienteRepository" mapTo="ClienteRepository"/>
+      <!-- BusinessLogic -->
+      <register type="IProductoBL" mapTo="ProductoBL"/>
+      <register type="ICategoriaBL" mapTo="CategoriaBL"/>
+      <register type="IFormaPagoBL" mapTo="FormaPagoBL"/>
+      <register type="IClienteBL" mapTo="ClienteBL"/>
+>>>>>>> Fin Semana 12 - dia 02
     </container>
   </unity>
-
   <connectionStrings>
+<<<<<<< HEAD
     <add name="ApplicationServices" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnetdb.mdf;User Instance=true" providerName="System.Data.SqlClient" />
     <add name="DBSystemContext" connectionString="Data Source=.;Initial Catalog=DBSystem02;Integrated Security=True;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
+=======
+    <add name="ApplicationServices" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnetdb.mdf;User Instance=true" providerName="System.Data.SqlClient"/>
+    <add name="DBSystemContext" connectionString="Data Source=.;Initial Catalog=DBSystem02;Integrated Security=True;MultipleActiveResultSets=True" providerName="System.Data.SqlClient"/>
+>>>>>>> Fin Semana 12 - dia 02
   </connectionStrings>
-
   <system.web>
-    <compilation debug="true" targetFramework="4.0" />
+    <compilation debug="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+        <add assembly="System.Web.Extensions.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"/>
+        <add assembly="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089"/>
+      </assemblies>
+    </compilation>
 
+    
+    
     <authentication mode="Forms">
-      <forms loginUrl="~/Account/Login.aspx" timeout="2880" />
+      <forms loginUrl="~/Account/Login.aspx" timeout="2880"/>
     </authentication>
-
     <membership>
       <providers>
+<<<<<<< HEAD
         <clear />
         <add name="AspNetSqlMembershipProvider" type="System.Web.Security.SqlMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/" />
+=======
+        <clear/>
+        <add name="AspNetSqlMembershipProvider" type="System.Web.Security.SqlMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/"/>
+>>>>>>> Fin Semana 12 - dia 02
       </providers>
     </membership>
-
     <profile>
       <providers>
         <clear />
         <add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="ApplicationServices" applicationName="/" />
       </providers>
     </profile>
-
     <roleManager enabled="false">
       <providers>
+<<<<<<< HEAD
         <clear />
         <add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="ApplicationServices" applicationName="/" />
         <add name="AspNetWindowsTokenRoleProvider" type="System.Web.Security.WindowsTokenRoleProvider" applicationName="/" />
@@ -79,5 +103,20 @@
 
   <system.webServer>
      <modules runAllManagedModulesForAllRequests="true" />
+=======
+        <clear/>
+        <add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="ApplicationServices" applicationName="/"/>
+        <add name="AspNetWindowsTokenRoleProvider" type="System.Web.Security.WindowsTokenRoleProvider" applicationName="/"/>
+      </providers>
+    </roleManager>
+    <pages>
+      <controls>
+        <add tagPrefix="ajaxToolkit" assembly="AjaxControlToolkit" namespace="AjaxControlToolkit"/>
+      </controls>
+    </pages>
+  </system.web>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+>>>>>>> Fin Semana 12 - dia 02
   </system.webServer>
 </configuration>

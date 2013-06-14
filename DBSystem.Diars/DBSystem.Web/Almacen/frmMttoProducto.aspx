@@ -5,64 +5,111 @@
     <asp:FormView ID="fvProducto" runat="server" DataSourceID="odsProducto" 
         DefaultMode="Insert">
         <EditItemTemplate>
-            Id:
-            <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
-            <br />
-            CategoriaId:
-            <asp:TextBox ID="CategoriaIdTextBox" runat="server" 
-                Text='<%# Bind("CategoriaId") %>' />
-            <br />
-            Codigo:
-            <asp:TextBox ID="CodigoTextBox" runat="server" Text='<%# Bind("Codigo") %>' />
-            <br />
-            Descripcion:
-            <asp:TextBox ID="DescripcionTextBox" runat="server" 
-                Text='<%# Bind("Descripcion") %>' />
-            <br />
-            Precio:
-            <asp:TextBox ID="PrecioTextBox" runat="server" Text='<%# Bind("Precio") %>' />
-            <br />
-            Stock:
-            <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
-            <br />
-            Descontinuado:
-            <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
-                Checked='<%# Bind("Descontinuado") %>' />
-            <br />
-            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
+            <div class="forms columnar">
+                <ul>
+                <li>
+                    <label class="bold" >Id:</label>
+                    <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                </li>
+                <li>
+                    <label class="bold">Cagegoria:</label>
+                    <asp:DropDownList ID="ddlCategoria" runat="server" DataSourceID="odsCategorias" 
+                    DataTextField="descripcion" DataValueField="id" 
+                    SelectedValue='<%# Bind("CategoriaId") %>'>
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="odsCategorias" runat="server" 
+                        onobjectcreating="odsCategorias_ObjectCreating" 
+                        SelectMethod="GetAllFromCategoria" 
+                        TypeName="DBSystem.BusinessLogic.CategoriaBL"></asp:ObjectDataSource>
+                </li>
+                <li>
+                    <label class="bold">Codigo:</label>
+                    <asp:TextBox ID="CodigoTextBox" runat="server" Text='<%# Bind("Codigo") %>' />
+                </li>
+                <li>
+                    <label class="bold">Descripcion:</label>
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" 
+                    Text='<%# Bind("Descripcion") %>' />
+                </li>
+                <li>
+                    <label class="bold">Precio:</label>
+                    <asp:TextBox ID="PrecioTextBox" runat="server" Text='<%# Bind("Precio") %>' />
+                </li>
+                <li>
+                    <label class="bold">Stock:</label>
+                    <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
+                </li>
+                <li>
+                    <label class="bold">Descontinuado:</label>
+                    <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
+                        Checked='<%# Bind("Descontinuado") %>' />
+                </li>
+                <li class="push">
+                     <asp:LinkButton CssClass="btn btn-round" ID="UpdateButton" runat="server" CausesValidation="True" 
                 CommandName="Update" Text="Actualizar" />
-            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
+            &nbsp;<asp:LinkButton CssClass="btn btn-round" ID="UpdateCancelButton" runat="server" 
                 CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                </li>
+            </ul>
+            </div>          
         </EditItemTemplate>
         <InsertItemTemplate>
-            Id:
-            <asp:TextBox ID="IdTextBox" runat="server" ReadOnly="True" Text="0" />
-            <br />
-            CategoriaId:
-            <asp:TextBox ID="CategoriaIdTextBox" runat="server" 
-                Text='<%# Bind("CategoriaId") %>' />
-            <br />
-            Codigo:
-            <asp:TextBox ID="CodigoTextBox" runat="server" Text='<%# Bind("Codigo") %>' />
-            <br />
-            Descripcion:
-            <asp:TextBox ID="DescripcionTextBox" runat="server" 
-                Text='<%# Bind("Descripcion") %>' />
-            <br />
-            Precio:
-            <asp:TextBox ID="PrecioTextBox" runat="server" Text='<%# Bind("Precio") %>' />
-            <br />
-            Stock:
-            <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
-            <br />
-            Descontinuado:
-            <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
-                Checked='<%# Bind("Descontinuado") %>' />
-            <br />
-            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
+            
+            <div class="forms columnar">
+                <ul>
+                <li>
+                    <label class="bold" >Id:</label>
+                    <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                </li>
+                <li>
+                    <label class="bold">Cagegoria:</label>
+                    <asp:DropDownList ID="ddlCategoria" runat="server" DataSourceID="odsCategorias" 
+                    DataTextField="descripcion" DataValueField="id" 
+                    SelectedValue='<%# Bind("CategoriaId") %>'>
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="odsCategorias" runat="server" 
+                        onobjectcreating="odsCategorias_ObjectCreating" 
+                        SelectMethod="GetAllFromCategoria" 
+                        TypeName="DBSystem.BusinessLogic.CategoriaBL"></asp:ObjectDataSource>
+                </li>
+                <li>
+                    <label class="bold">Codigo:</label>
+                    <asp:TextBox ID="CodigoTextBox" runat="server" Text='<%# Bind("Codigo") %>' />
+                    <asp:RequiredFieldValidator ID="rfVCodigo" runat="server" 
+                        ErrorMessage="El codigo es Requerido" ControlToValidate="CodigoTextBox" 
+                        CssClass="error" Display="Dynamic">*</asp:RequiredFieldValidator>
+                    <ajaxToolkit:ValidatorCalloutExtender ID="rfVCodigo_ValidatorCalloutExtender" 
+                        runat="server" Enabled="True" TargetControlID="rfVCodigo">
+                    </ajaxToolkit:ValidatorCalloutExtender>
+                </li>
+                <li>
+                    <label class="bold">Descripcion:</label>
+                    <asp:TextBox ID="DescripcionTextBox" runat="server" 
+                    Text='<%# Bind("Descripcion") %>' />
+                </li>
+                <li>
+                    <label class="bold">Precio:</label>
+                    <asp:TextBox ID="PrecioTextBox" runat="server" Text='<%# Bind("Precio") %>' />
+                </li>
+                <li>
+                    <label class="bold">Stock:</label>
+                    <asp:TextBox ID="StockTextBox" runat="server" Text='<%# Bind("Stock") %>' />
+                </li>
+                <li>
+                    <label class="bold">Descontinuado:</label>
+                    <asp:CheckBox ID="DescontinuadoCheckBox" runat="server" 
+                        Checked='<%# Bind("Descontinuado") %>' />
+                </li>
+                <li class="push">
+                     <asp:LinkButton CssClass="btn btn-round" ID="InsertButton" runat="server" CausesValidation="True" 
                 CommandName="Insert" Text="Insertar" />
-            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" 
+            &nbsp;<asp:LinkButton CssClass="btn btn-round" ID="InsertCancelButton" runat="server" 
                 CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                </li>
+            </ul>
+            </div>
+
+            
         </InsertItemTemplate>
         <ItemTemplate>
             Id:
