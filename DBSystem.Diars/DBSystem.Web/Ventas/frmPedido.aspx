@@ -3,38 +3,72 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
-    <asp:UpdatePanel ID="upCliente"  runat="server">
-        <ContentTemplate>            
-            <fieldset>
+<div class="row">
+    <div class="half">
+         <asp:UpdatePanel ID="upCliente"  runat="server">
+        <ContentTemplate>
+             <div class="forms">
+                <fieldset>
                 <legend>Cliente</legend>
-                <label class="bold" >Ruc/DNI</label>
-                <asp:TextBox ID="txtRucDNI" runat="server" /> 
-                <asp:Button ID="btnBuscarCliente" CssClass="btn" Text="..." runat="server" 
+                <ul>
+                    <li>
+                        <label class="bold" >Ruc/DNI</label>
+                        <asp:TextBox ID="txtRucDNI" runat="server" /> 
+                        <asp:Button ID="btnBuscarCliente" CssClass="btn btn-small" Text="..." runat="server" 
                     onclick="btnBuscarCliente_Click" />
-                <br />
-                <label class="bold" >Razón Social</label>
-                <asp:TextBox ID="txtRazonSocial" runat="server" Width="300px" /><br />
-                <label class="bold" >Dirección</label>
-                <asp:TextBox ID="txtDireccion" Width="200px" runat="server" />
+                    </li>
+                    <li>
+                        <label class="bold" >Razón Social</label>
+                        <asp:TextBox ID="txtRazonSocial" runat="server" Width="100%" /><br />
+                    </li>
+                    <li>
+                        <label class="bold" >Dirección</label>
+                        <asp:TextBox ID="txtDireccion" Width="100%" runat="server" />
+                    </li>
+                </ul>             
             </fieldset>
+             </div>    
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="btnBuscarCliente" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
-
+    </div>
+   <div class="half">
+       <div class="forms">
+            <ul>
+                <li>
+                    <label class="bold">Fecha</label>
+                    <asp:TextBox ID="txtFecha" runat="server" />
+                    <ajaxToolkit:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                        Enabled="True" TargetControlID="txtFecha">
+                    </ajaxToolkit:CalendarExtender>
+                </li>
+                <li>
+                    <label class="bold">Tipo de Pago</label>
+                    <asp:DropDownList ID="ddlTipoPago" runat="server"/>
+                </li>
+            </ul>
+       </div>
+   </div>
+</div>
+    
+    
     <asp:UpdatePanel ID="udpProductos" runat="server">
-        <ContentTemplate>
-            <fieldset>
+        <ContentTemplate>            
+            <asp:Panel ID="pnlProductos" runat="server">
+             <fieldset>
                 <legend>Productos</legend>
                 <label class="bold">Criterio</label>
-                <asp:TextBox ID="txtCriterio" Width="200px" runat="server" />
-                <asp:Button ID="btnBuscarProducto" CssClass="btn" Text="Buscar" runat="server" />
-                &nbsp;<asp:GridView ID="gvProductos" runat="server" DataSourceID="odsProductos" 
-                    AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" 
-                    DataKeyNames="Id" ForeColor="#333333" GridLines="None" PageSize="3" 
-                    onrowcommand="gvProductos_RowCommand" >
-                    <AlternatingRowStyle BackColor="White" />
+                <span class="btn-group">
+                    <asp:TextBox ID="txtCriterio" CssClass="input-search" Width="200px" runat="server" />
+                    <asp:Button ID="btnBuscarProducto" CssClass="btn btn-round" Text="Buscar" runat="server" />
+                </span>           
+                <br />
+                <asp:GridView ID="gvProductos" runat="server" DataSourceID="odsProductos" 
+                    AllowPaging="True" AutoGenerateColumns="False" 
+                    DataKeyNames="Id" 
+                    onrowcommand="gvProductos_RowCommand" PageSize="6" >
                     <Columns>
                         <asp:BoundField DataField="Categoria.Descripcion" HeaderText="Categoria" 
                             SortExpression="Categoria" />
@@ -53,16 +87,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    <HeaderStyle CssClass="thead-black" Font-Bold="True" ForeColor="White" />
                 </asp:GridView>
                 <asp:ObjectDataSource ID="odsProductos" runat="server" 
                     onobjectcreating="odsProductos_ObjectCreating" 
@@ -74,6 +99,7 @@
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </fieldset>
+            </asp:Panel>
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="btnBuscarProducto" EventName="Click" />
@@ -114,9 +140,10 @@
                                     CssClass="btn" Text="Quitar" />
                             </ItemTemplate>
                             
-                        </asp:TemplateField>
+                        </asp:TemplateField>                        
                     </Columns>
-                </asp:GridView>
+                    <HeaderStyle CssClass="thead-black" Font-Bold="True" ForeColor="White" />
+                </asp:GridView>             
             </fieldset>
         </ContentTemplate>
         <Triggers>

@@ -444,12 +444,12 @@ textarea {
   font-size: .95em;
 }
 fieldset {
-  padding: 2em 1.5em;
-  margin-bottom: 1.5em;
+  padding: 0.5em 1em;
+  margin-bottom: 0.5em;
   border: 1px solid #dddddd;
 }
 legend {
-  font-size: 1.2em;
+  font-size: 0.8em;
   text-transform: uppercase;
   font-weight: bold;
   padding: 0 1em;
@@ -461,8 +461,10 @@ tfoot td {
 th,
 td {
   border-bottom: 1px solid #eeeeee;
-  padding: 0.75em 0.5em;
+  padding: 0.1em 0.1em;
+  vertical-align: middle;
 }
+
 .com {
   color: #888;
 }
@@ -506,7 +508,7 @@ table caption {
 table.simple td,
 table.simple th {
   border: none;
-  padding: 0.75em 0.7em 0.75em 0;
+  padding: 0.5em 0.5em 0.5em 0;
 }
 table.bordered td,
 table.bordered th {
