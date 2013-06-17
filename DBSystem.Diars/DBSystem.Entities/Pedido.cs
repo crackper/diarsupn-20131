@@ -16,7 +16,7 @@ namespace DBSystem.Entities
         public decimal total { get; set; }
         public int formaPagoId { get; set; }
         public virtual Cliente Cliente { get; set; }
-        public virtual ICollection<DetallePedido> DetallePedidoes { get; set; }
+        public virtual List<DetallePedido> DetallePedidoes { get; set; }
         public virtual FormaPago FormaPago { get; set; }
     }
 }

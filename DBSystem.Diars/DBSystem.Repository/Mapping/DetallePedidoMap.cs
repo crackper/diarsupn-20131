@@ -18,6 +18,8 @@ namespace DBSystem.Repository.Mapping
             this.Property(t => t.pedidoId)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
+            this.Ignore(t => t.monto);
+
             // Table & Column Mappings
             this.ToTable("DetallePedido");
             this.Property(t => t.item).HasColumnName("item");

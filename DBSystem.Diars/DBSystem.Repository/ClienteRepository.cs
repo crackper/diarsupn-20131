@@ -31,7 +31,7 @@ namespace DBSystem.Repository
 
         public Cliente GetFromClienteByRucDni(string rucDni)
         {
-            return Context.Clientes.Where(c => c.razonSocial.Equals(rucDni)).SingleOrDefault();
+            return Context.Clientes.Where(c => c.rucDni.Equals(rucDni)).SingleOrDefault();
         }
 
         public void AddCliente(Cliente cliente)

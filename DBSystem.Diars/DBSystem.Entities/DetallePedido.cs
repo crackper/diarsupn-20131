@@ -10,6 +10,13 @@ namespace DBSystem.Entities
         public int productoId { get; set; }
         public decimal cantidad { get; set; }
         public decimal precio { get; set; }
+        
+        public decimal monto 
+        {
+            get { return precio * cantidad; }
+
+        }
+
         public virtual Pedido Pedido { get; set; }
         public virtual Producto Producto { get; set; }
     }

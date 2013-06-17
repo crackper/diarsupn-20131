@@ -87,6 +87,7 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Ventas\frmListClientes.aspx" />
+    <Content Include="Ventas\frmPedido.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="Ventas\frmListClientes.aspx.designer.cs">
       <DependentUpon>frmListClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmPedido.aspx.cs">
+      <DependentUpon>frmPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmPedido.aspx.designer.cs">
+      <DependentUpon>frmPedido.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
