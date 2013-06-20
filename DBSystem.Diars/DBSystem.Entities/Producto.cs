@@ -20,5 +20,10 @@ namespace DBSystem.Entities
         public bool Descontinuado { get; set; }
         public virtual Categoria Categoria { get; set; }
         public virtual ICollection<DetallePedido> DetallePedidoes { get; set; }
+
+        public override string ToString()
+        {
+            return Codigo + " - " + Descripcion;
+        }
     }
 }

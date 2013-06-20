@@ -104,16 +104,29 @@ namespace DBSystem.Web.Ventas
                 //recupero el pedido en cache
                 var pedido = Cache.Get(PEDIDO) as Pedido;
 
-                //actualizo el pedido
-                var detalle = new DetallePedido()
-                {
-                    productoId = producto.Id,
-                    precio = producto.Precio,
-                    Producto = producto,
-                    cantidad = 1
-                };
+                var existe = pedido.DetallePedidoes
+                            .Where(d => d.productoId.Equals(idProducto))
+                            .SingleOrDefault();
 
-                pedido.DetallePedidoes.Add(detalle);
+                if (existe == null)
+                {
+                    //actualizo el pedido
+                    var detalle = new DetallePedido()
+                    {
+                        productoId = producto.Id,
+                        precio = producto.Precio,
+                        Producto = producto,
+                        cantidad = 1
+                    };
+
+                    pedido.DetallePedidoes.Add(detalle);
+                }
+                else
+                {
+                    existe.cantidad++;
+                }
+
+                lblTotal.Text = pedido.DetallePedidoes.Sum(d => d.monto).ToString();
 
                 //sobre escribo el cache
                 Cache.Insert(PEDIDO, pedido);
@@ -121,6 +134,69 @@ namespace DBSystem.Web.Ventas
                 gvDetallePedido.DataSource = pedido.DetallePedidoes;
                 gvDetallePedido.DataBind();
             }
+        }
+
+        protected void gvDetallePedido_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "QuitarDetalle")
+            {
+                var idProducto = Int32.Parse(e.CommandArgument.ToString());
+
+                //recupero el pedido en cache
+                var pedido = Cache.Get(PEDIDO) as Pedido;
+
+                //actualizo el pedido
+                var existe = pedido.DetallePedidoes
+                        .Where(d => d.productoId.Equals(idProducto))
+                        .SingleOrDefault();
+
+                if (existe !=null)
+                {
+                    pedido.DetallePedidoes.Remove(existe);
+                }
+
+                lblTotal.Text = pedido.DetallePedidoes.Sum(d => d.monto).ToString();
+
+                //sobre escribo el cache
+                Cache.Insert(PEDIDO, pedido);
+
+                gvDetallePedido.DataSource = pedido.DetallePedidoes;
+                gvDetallePedido.DataBind();
+
+            }
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            //recupero el pedido en cache
+            var pedido = Cache.Get(PEDIDO) as Pedido;
+
+            foreach (GridViewRow row in gvDetallePedido.Rows)
+            {
+                var txtPrecio = row.FindControl("txtPrecio") as TextBox;
+                var txtCantidad = row.FindControl("txtCantidad") as TextBox;
+
+                pedido.DetallePedidoes[row.RowIndex].cantidad = Int32.Parse(txtCantidad.Text);
+                pedido.DetallePedidoes[row.RowIndex].precio = decimal.Parse(txtPrecio.Text);
+
+            }
+
+            lblTotal.Text = pedido.DetallePedidoes.Sum(d => d.monto).ToString();
+
+            //sobre escribo el cache
+            Cache.Insert(PEDIDO, pedido);
+
+            gvDetallePedido.DataSource = pedido.DetallePedidoes;
+            gvDetallePedido.DataBind();
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            //recupero el pedido en cache
+            var pedido = Cache.Get(PEDIDO) as Pedido;
+
+            //lo mando al bl...y el Repository hace su trabajo
+            //pedidoBL.AddPedido(pedido);
         }
     }
 }

@@ -35,21 +35,35 @@
     </asp:UpdatePanel>
     </div>
    <div class="half">
-       <div class="forms">
-            <ul>
-                <li>
-                    <label class="bold">Fecha</label>
-                    <asp:TextBox ID="txtFecha" runat="server" />
-                    <ajaxToolkit:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
-                        Enabled="True" TargetControlID="txtFecha">
-                    </ajaxToolkit:CalendarExtender>
-                </li>
-                <li>
-                    <label class="bold">Tipo de Pago</label>
-                    <asp:DropDownList ID="ddlTipoPago" runat="server"/>
-                </li>
-            </ul>
-       </div>
+       <asp:UpdatePanel ID="udpPedido" runat="server">
+           <ContentTemplate>
+                <div class="forms">
+                    <ul>
+                        <li>
+                            <label class="bold">Fecha</label>
+                            <asp:TextBox ID="txtFecha" runat="server" />
+                            <ajaxToolkit:CalendarExtender ID="txtFecha_CalendarExtender" runat="server" 
+                                Enabled="True" TargetControlID="txtFecha">
+                            </ajaxToolkit:CalendarExtender>
+                        </li>
+                        <li>
+                            <label class="bold">Tipo de Pago</label>
+                            <asp:DropDownList ID="ddlTipoPago" runat="server"/>
+                        </li>
+                        <li>
+                            <label class="bold">Total:</label>
+                            <asp:Label id="lblTotal" CssClass="bold" runat="server" />
+                        </li>
+                    </ul>
+               </div>
+           </ContentTemplate>
+           <Triggers>
+               <asp:AsyncPostBackTrigger ControlID="gvProductos" EventName="RowCommand" />
+               <asp:AsyncPostBackTrigger ControlID="gvDetallePedido" EventName="RowCommand" />
+           </Triggers>
+       </asp:UpdatePanel>
+
+       
    </div>
 </div>
     
@@ -110,10 +124,10 @@
         <ContentTemplate>
             <fieldset>
                 <legend>Detalle Pedido</legend>
-                <asp:GridView ID="gvDetallePedido" runat="server" AutoGenerateColumns="False" > 
+                <asp:GridView ID="gvDetallePedido" runat="server" AutoGenerateColumns="False" 
+                    onrowcommand="gvDetallePedido_RowCommand" > 
                     <Columns>
-                        <asp:BoundField DataField="Producto.Codigo" HeaderText="Codigo" />
-                        <asp:BoundField DataField="Producto.Descripcion" HeaderText="Descripción" />
+                        <asp:BoundField DataField="Producto" HeaderText="Descripcion" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
                                 <asp:TextBox ID="txtCantidad" runat="server" Text="<%# Bind('cantidad') %>" 
@@ -135,7 +149,7 @@
                             
                             <ItemTemplate>
                                 <asp:Button ID="btnQuitar" runat="server" 
-                                    CommandArgument="Eval('productoId')" 
+                                    CommandArgument='<%# Eval("productoId") %>'
                                     CommandName="QuitarDetalle" 
                                     CssClass="btn" Text="Quitar" />
                             </ItemTemplate>
@@ -143,7 +157,11 @@
                         </asp:TemplateField>                        
                     </Columns>
                     <HeaderStyle CssClass="thead-black" Font-Bold="True" ForeColor="White" />
-                </asp:GridView>             
+                </asp:GridView>  
+                <asp:Button ID="btnActualizar" CssClass="btn btn-round" 
+                    Text="Actualizar Pedido" runat="server" onclick="btnActualizar_Click" />
+                <asp:Button ID="btnGuardar" CssClass="btn btn-round" 
+                    Text="Guardar Pedido" runat="server" onclick="btnGuardar_Click" />           
             </fieldset>
         </ContentTemplate>
         <Triggers>
